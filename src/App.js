@@ -4,16 +4,10 @@ import Country from "./Country";
 
 function App() {
   return (
-    // <>
-    //   <Homepage />
-    //   <Country />
-    // </>
-
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path=":cca3" element={<Country />} />
-
       </Routes>
     </BrowserRouter>
   );

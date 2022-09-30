@@ -1,50 +1,62 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Header from "./Header";
 
 const Homepage = () => {
   const [countries, setCountries] = useState([]);
-
-  const url = "https://restcountries.com/v3.1/all";
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
+     setLoading(true);
+     setError(false);
     axios
-      .get(url)
+      .get("https://restcountries.com/v3.1/all")
       .then((response) => {
+        setLoading(false);
         setCountries(response.data);
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch((error) => {
+        setError(true);
+        setLoading(false);
         console.log(error);
       });
   }, []);
 
+    if (loading) {
+    return <div>loading...</div>;
+    }
+
+    if (error) {
+    return <div>error</div>;
+    }
+
   return (
-    <div>
-      <header>
-        <h1>Where in the World?</h1>
-        <div>Dark mode button</div>
-      </header>
-      
+    <>
+      <Header />
+      <section>
+        <div>Search</div>
+        <div>Filter</div>
+      </section>
+      <main>
         {countries.map((country) => {
           const { cca3, flags, name, population, region, capital } = country;
           return (
-            
-              <div key={cca3}>
-                <Link to={`/${cca3}`}>
+            <div key={cca3}>
+              <Link to={`/${cca3}`}>
                 <img src={flags.png} alt={name.common} />
-                <div>{name.common}</div>
-                <div>Population: {population}</div>
-                <div>Region: {region}</div>
-                <div>capital: {capital}</div>
-                <div>{cca3}</div>
-                 </Link>
-              </div>
-               
+              </Link>
+              <h2>{name.common}</h2>
+              <div>Population: {population.toLocaleString()}</div>
+              <div>Region: {region}</div>
+              <div>capital: {capital}</div>
+            </div>
           );
         })}
-      
-    </div>
+      </main>
+    </>
   );
 }
 
