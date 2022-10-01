@@ -55,8 +55,11 @@ const Country = () => {
             tld,
             currencies,
             languages,
-            neigbours,
+            borders,
           } = state;
+          const currencyObj = Object.keys(currencies);
+          const currencyList = currencyObj.map((currency) => currencies[currency].name);
+          const languageList = Object.values(languages);
           return (
             <div key={cca3}>
               <div>
@@ -69,9 +72,33 @@ const Country = () => {
                 <div>Subregion: {subregion}</div>
                 <div>Capital: {capital}</div>
                 <div>Top level domain: {tld}</div>
-                <div>Currency: ?</div>
-                <div>Languages: ?</div>
-                <div>Border Countries: ?</div>
+                <div>
+                  Currencies:{" "}
+                  {currencyList.map((currency) => {
+                    // currency.replace(/,\s*$/, "");
+                    return <>{currency},</>;
+                  })}
+                </div>
+                <div>
+                  Languages:{" "}
+                  {languageList.map((language) => {
+                    // language.slice(0, -1);
+                    return <>{language},</>;
+                  })}
+                </div>
+                <ul>
+                  {borders
+                    ? borders.map((border) => {
+                        return (
+                          <li>
+                            <Link key={border} to={`/${border.toLowerCase()}`}>
+                              {border}
+                            </Link>
+                          </li>
+                        );
+                      })
+                    : null}
+                </ul>
               </div>
             </div>
           );
