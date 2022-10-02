@@ -40,13 +40,13 @@ const Homepage = () => {
         <div>Search</div>
         <div>Filter</div>
       </section>
-      <main>
+      <main className="container">
         {countries.map((country) => {
           const { cca3, flags, name, population, region, capital } = country;
           return (
-            <div key={cca3}>
+            <div className="container__item" key={cca3}>
               <Link to={`/${cca3}`}>
-                <img src={flags.png} alt={name.common} />
+                <img className="container__flag" src={flags.png} alt={name.common} />
               </Link>
               <h2>{name.common}</h2>
               <div>Population: {population.toLocaleString()}</div>

@@ -1,0 +1,26 @@
+body {
+    font-size: 14px;
+    max-width: 1440px;
+    margin: auto;
+}
+
+section {
+    @include space-between;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    
+}
+
+.container__item {
+    margin: 1.5rem;
+    // max-width: 300px;
+}
+
+.container__flag {
+    // height: 230px;
+    width: 300px;
+}
