@@ -1,4 +1,8 @@
 body {
+    background-color: $light-bg;
+}
+
+.homepage-main {
     font-size: 14px;
     max-width: 1440px;
     margin: auto;
@@ -8,19 +12,55 @@ section {
     @include space-between;
 }
 
+form {
+    padding: 1rem;
+    margin: 1rem 0;
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    position: relative;
+}
+
+.search-icon {
+    position: absolute;
+    left: 2rem;
+    bottom: 2.25rem;
+    color: white;
+    font-size: 1.5rem;
+}
+
+input {
+    width: 100%;
+    height: 4rem;
+    background: rgba(255, 255, 255, 0.2);
+    border: 5px solid white;
+    border-radius: 30px;
+    padding: 1rem 2.5rem;
+    font-size: 1.25rem;
+}
+
 .container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
     
 }
 
 .container__item {
-    margin: 1.5rem;
-    // max-width: 300px;
+    background-color: $white;
+    border-radius: 5px;
+    margin-bottom: 3rem;
+    padding-bottom: 2.5rem;
+    box-shadow: $box-shadow;
 }
 
 .container__flag {
-    // height: 230px;
-    width: 300px;
+    max-height: 200px;
+    max-width: 300px;
+}
+
+.container__text {
+    margin-left: 1.5rem;
 }
