@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import Header from "./Header";
+import Footer from "./Footer";
 
 const Country = () => {
     const params = useParams();
@@ -30,11 +31,31 @@ const Country = () => {
     }, []);
 
     if (loading) {
-        return <div>loading...</div>
+        return (
+          <>
+            <Header />
+            <Link to={"/"}>
+              <div className="back-btn">Back</div>
+            </Link>
+            <div className="loader"></div>
+            <Footer />
+          </>
+        );
     }
 
     if (error) {
-        return <div>error</div>
+        return (
+          <>
+            <Header />
+            <section>
+              <Link to={"/"}>
+                <div className="back-btn">Back</div>
+              </Link>
+            </section>
+            <div className="error-msg">Error loading data :(</div>
+            <Footer />
+          </>
+        );
 
     }
 
@@ -42,7 +63,9 @@ const Country = () => {
     <>
       <Header />
       <section>
-        <Link to={'/'}>Back</Link>
+        <Link to={"/"}>
+          <div className="back-btn">Back</div>
+        </Link>
       </section>
       <main>
         {country.map((state) => {
@@ -60,9 +83,11 @@ const Country = () => {
             borders,
           } = state;
           const currencyObj = Object.keys(currencies);
-          const currencyList = currencyObj.map((currency) => currencies[currency].name);
+          const currencyList = currencyObj.map(
+            (currency) => currencies[currency].name
+          );
           const languageList = Object.values(languages);
-          console.log(currencyObj)
+          console.log(currencyObj);
           return (
             <div key={cca3} className="country">
               <div className="country__flag">
@@ -110,7 +135,7 @@ const Country = () => {
                     </div>
                   </div>
                 </div>
-                <h3>Border Countries</h3>
+                <h3>{borders ? "Border Countries" : null}</h3>
                 <ul className="country__borders">
                   {borders
                     ? borders.map((border) => {
@@ -129,6 +154,7 @@ const Country = () => {
           );
         })}
       </main>
+      <Footer />
     </>
   );
     }

@@ -342,6 +342,48 @@ template {
   font-family: "Nunito Sans", sans-serif;
 }
 
+a {
+  text-decoration: none;
+}
+a:visited {
+  color: red;
+}
+
+.loader {
+  margin: 2rem auto;
+  border: 1rem solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 1rem solid blue;
+  border-bottom: 1rem solid blue;
+  width: 80px;
+  height: 80px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.error-msg {
+  color: red;
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 2rem;
+}
+
 body {
   background-color: hsl(0deg, 0%, 98%);
 }
@@ -427,6 +469,19 @@ header {
   margin: auto;
 }
 
+footer {
+  margin: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.back-btn {
+  border: 1px solid black;
+  padding: 1rem;
+  margin: 1rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
 .country {
   border: 1px solid blue;
   padding: 2rem;
@@ -498,8 +553,4 @@ li {
   display: inline-flex;
   flex-wrap: wrap;
   cursor: pointer;
-}
-
-li a {
-  text-decoration: none;
 }

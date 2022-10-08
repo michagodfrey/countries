@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Header from "./Header";
+import Footer from "./Footer";
 
 const Homepage = () => {
   const [countries, setCountries] = useState([]);
@@ -29,7 +30,8 @@ const Homepage = () => {
     return (
       <>
         <Header />
-        <div>Loading...</div>
+        <div className="loader"></div>
+        <Footer />
       </>
     );
     }
@@ -38,7 +40,8 @@ const Homepage = () => {
     return (
       <>
         <Header />
-        <div>Error</div>
+        <div className="error-msg">Error loading data :(</div>
+        <Footer />
       </>
     );
     }
@@ -89,7 +92,7 @@ const Homepage = () => {
           })}
         </div>
       </main>
-      <footer></footer>
+      <Footer />
     </div>
   );
 }
