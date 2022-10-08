@@ -26,17 +26,27 @@ const Homepage = () => {
   }, []);
 
     if (loading) {
-    return <div>loading...</div>;
+    return (
+      <>
+        <Header />
+        <div>Loading...</div>
+      </>
+    );
     }
 
     if (error) {
-    return <div>error</div>;
+    return (
+      <>
+        <Header />
+        <div>Error</div>
+      </>
+    );
     }
 
   return (
-    <>
+    <div className="homepage">
       <Header />
-      <main className="homepage-main">
+      <main className="homepage__main">
         <section>
           <form>
             <i className="material-icons search-icon">search</i>
@@ -80,7 +90,7 @@ const Homepage = () => {
         </div>
       </main>
       <footer></footer>
-    </>
+    </div>
   );
 }
 

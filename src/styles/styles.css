@@ -346,7 +346,11 @@ body {
   background-color: hsl(0deg, 0%, 98%);
 }
 
-.homepage-main {
+.homepage {
+  font-size: 14px;
+}
+
+.homepage__main {
   font-size: 14px;
   max-width: 1440px;
   margin: auto;
@@ -423,6 +427,79 @@ header {
   margin: auto;
 }
 
-body {
-  font-size: 16px;
+.country {
+  border: 1px solid blue;
+  padding: 2rem;
+}
+@media (min-width: 992px) {
+  .country {
+    display: flex;
+  }
+}
+
+.country__details-wrapper {
+  border: 1px solid black;
+  max-width: 600px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+@media (min-width: 992px) {
+  .country__details-wrapper {
+    max-width: 900px;
+  }
+}
+
+.country__details {
+  border: 1px solid red;
+}
+@media (min-width: 992px) {
+  .country__details {
+    display: flex;
+    flex: 1 1 50%;
+  }
+}
+
+.country__flag {
+  background-color: red;
+  display: flex;
+  justify-content: center;
+}
+@media (min-width: 992px) {
+  .country__flag {
+    display: flex;
+    max-width: 50%;
+    flex: 1 1 50%;
+  }
+}
+
+.country__flag img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+}
+@media (min-width: 992px) {
+  .country__flag img {
+    max-width: 900px;
+  }
+}
+
+.country__borders {
+  border: 1px solid green;
+}
+
+li {
+  list-style: none;
+  padding: 0.5rem 1.5rem;
+  margin: 0.5rem 0.25rem;
+  border: 1px solid black;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  display: inline-flex;
+  flex-wrap: wrap;
+  cursor: pointer;
+}
+
+li a {
+  text-decoration: none;
 }

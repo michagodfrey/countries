@@ -2,7 +2,11 @@ body {
     background-color: $light-bg;
 }
 
-.homepage-main {
+.homepage {
+    font-size: 14px;
+}
+
+.homepage__main {
     font-size: 14px;
     max-width: 1440px;
     margin: auto;

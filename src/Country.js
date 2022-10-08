@@ -9,6 +9,8 @@ const Country = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
+    // console.log(params)
+
     useEffect(() => {
       setLoading(true);
       setError(false);
@@ -60,38 +62,61 @@ const Country = () => {
           const currencyObj = Object.keys(currencies);
           const currencyList = currencyObj.map((currency) => currencies[currency].name);
           const languageList = Object.values(languages);
+          console.log(currencyObj)
           return (
-            <div key={cca3}>
-              <div>
+            <div key={cca3} className="country">
+              <div className="country__flag">
                 <img src={flags.png} alt={name.common} />
               </div>
-              <div>
-                <h2>{name.common}</h2>
-                <div>Population: {population.toLocaleString()}</div>
-                <div>Region: {region}</div>
-                <div>Subregion: {subregion}</div>
-                <div>Capital: {capital}</div>
-                <div>Top level domain: {tld}</div>
-                <div>
-                  Currencies:{" "}
-                  {currencyList.map((currency) => {
-                    // currency.replace(/,\s*$/, "");
-                    return <>{currency},</>;
-                  })}
+              <div className="country__details-wrapper">
+                <div className="country__details">
+                  <div>
+                    <h2>{name.common}</h2>
+                    <div>
+                      <b>Population: </b>
+                      {population.toLocaleString()}
+                    </div>
+                    <div>
+                      <b>Region: </b>
+                      {region}
+                    </div>
+                    <div>
+                      <b>Subregion: </b>
+                      {subregion}
+                    </div>
+                    <div>
+                      <b>Capital: </b>
+                      {capital}
+                    </div>
+                  </div>
+                  <div>
+                    <div>
+                      <b>Top level domain: </b>
+                      {tld}
+                    </div>
+                    <div>
+                      <b>Currencies: </b>
+                      {currencyList.map((currency) => {
+                        // currency.replace(/,\s*$/, "");
+                        return <>{currency},</>;
+                      })}
+                    </div>
+                    <div>
+                      <b>Languages: </b>
+                      {languageList.map((language) => {
+                        // language.slice(0, -1);
+                        return <>{language},</>;
+                      })}
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  Languages:{" "}
-                  {languageList.map((language) => {
-                    // language.slice(0, -1);
-                    return <>{language},</>;
-                  })}
-                </div>
-                <ul>
+                <h3>Border Countries</h3>
+                <ul className="country__borders">
                   {borders
                     ? borders.map((border) => {
                         return (
                           <li>
-                            <Link key={border} to={`/${border.toLowerCase()}`}>
+                            <Link key={border} to={`/${border.toUpperCase()}`}>
                               {border}
                             </Link>
                           </li>
