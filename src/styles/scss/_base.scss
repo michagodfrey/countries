@@ -1,3 +1,4 @@
+// color variables
 $dark-el: hsl(209, 23%, 22%);
 $dark-bg: hsl(207, 26%, 17%);
 $light-input: hsl(0, 0%, 52%);
@@ -5,29 +6,43 @@ $white: hsl(0, 0%, 100%);
 $light-bg: hsl(0, 0%, 98%);
 $light-text: hsl(200, 15%, 8%);
 
+// other variables
 $box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 
+// text and anchors
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
 
 * {
     font-family: 'Nunito Sans', sans-serif;
+    color: $light-text;
 }
 
 a {
     text-decoration: none;
     
     &:visited {
-        color: red;
+        color: royalblue;
     }
 
 }
 
+// h1 {
+//     font-size: .5rem;
+
+//     @include break-point {
+//         font-size: 1rem;
+//     } 
+        
+
+// }
+
+// loading animation and error message
 .loader {
         margin: 2rem auto;
-        border: 1rem solid #f3f3f3;
+        border: 1rem solid $light-bg;
         border-radius: 50%;
-        border-top: 1rem solid blue;
-        border-bottom: 1rem solid blue;
+        border-top: 1rem solid $light-text;
+        border-bottom: 1rem solid $light-text;
         width: 80px;
         height: 80px;
         -webkit-animation: spin 2s linear infinite;
@@ -61,8 +76,10 @@ a {
     margin-top: 2rem;
 }
 
+// mixins
 @mixin space-between {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }

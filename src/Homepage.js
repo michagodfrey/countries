@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Header from "./Header";
+import { FaSearch } from "react-icons/fa";
 import Footer from "./Footer";
 
 const Homepage = () => {
@@ -10,8 +11,8 @@ const Homepage = () => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-     setLoading(true);
-     setError(false);
+    setLoading(true);
+    setError(false);
     axios
       .get("https://restcountries.com/v3.1/all")
       .then((response) => {
@@ -26,7 +27,10 @@ const Homepage = () => {
       });
   }, []);
 
-    if (loading) {
+  // filter by region set
+  const allRegions = [...new Set(countries.map((country) => country.region))];
+
+  if (loading) {
     return (
       <>
         <Header />
@@ -34,9 +38,9 @@ const Homepage = () => {
         <Footer />
       </>
     );
-    }
+  }
 
-    if (error) {
+  if (error) {
     return (
       <>
         <Header />
@@ -44,7 +48,7 @@ const Homepage = () => {
         <Footer />
       </>
     );
-    }
+  }
 
   return (
     <div className="homepage">
@@ -52,13 +56,26 @@ const Homepage = () => {
       <main className="homepage__main">
         <section>
           <form>
-            <i className="material-icons search-icon">search</i>
+            {<FaSearch />}
             <input
               type="text"
+              name="search"
               placeholder="Search for a country..."
             />
+              <select name="filter">
+                <option value="" disabled selected>
+                  Filter by Region
+                </option>
+                {countries.map((country) => {
+                  const { region } = country;
+                  return (
+                    <>
+                      <option>{country.region}</option>;
+                    </>
+                  );
+                })}
+              </select>
           </form>
-          <div>Filter</div>
         </section>
         <div className="container">
           {countries.map((country) => {

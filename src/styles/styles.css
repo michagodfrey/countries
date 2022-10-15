@@ -340,21 +340,22 @@ template {
 
 * {
   font-family: "Nunito Sans", sans-serif;
+  color: hsl(200deg, 15%, 8%);
 }
 
 a {
   text-decoration: none;
 }
 a:visited {
-  color: red;
+  color: royalblue;
 }
 
 .loader {
   margin: 2rem auto;
-  border: 1rem solid #f3f3f3;
+  border: 1rem solid hsl(0deg, 0%, 98%);
   border-radius: 50%;
-  border-top: 1rem solid blue;
-  border-bottom: 1rem solid blue;
+  border-top: 1rem solid hsl(200deg, 15%, 8%);
+  border-bottom: 1rem solid hsl(200deg, 15%, 8%);
   width: 80px;
   height: 80px;
   -webkit-animation: spin 2s linear infinite;
@@ -399,38 +400,52 @@ body {
 }
 
 section {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  padding: 1rem;
 }
 
 form {
-  padding: 1rem;
-  margin: 1rem 0;
-  width: 100%;
-  max-width: 600px;
   display: flex;
-  justify-content: center;
-  align-self: center;
+  flex-direction: column;
   position: relative;
 }
-
-.search-icon {
+@media (min-width: 992px) {
+  form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+form svg {
+  fill: hsl(200deg, 15%, 8%);
   position: absolute;
-  left: 2rem;
-  bottom: 2.25rem;
-  color: white;
-  font-size: 1.5rem;
+  left: 20px;
+  top: 20px;
 }
 
 input {
-  width: 100%;
-  height: 4rem;
-  background: rgba(255, 255, 255, 0.2);
-  border: 5px solid white;
-  border-radius: 30px;
+  margin-bottom: 1rem;
+  background: hsl(0deg, 0%, 100%);
+  border: 2px solid hsl(0deg, 0%, 100%);
+  border-radius: 5px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   padding: 1rem 2.5rem;
-  font-size: 1.25rem;
+}
+@media (min-width: 992px) {
+  input {
+    width: 600px;
+  }
+}
+
+select {
+  width: 200px;
+  color: hsl(200deg, 15%, 8%);
+  background-color: hsl(0deg, 0%, 100%);
+  border: 2px solid hsl(0deg, 0%, 100%);
+  border-radius: 5px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  margin-bottom: 1rem;
 }
 
 .container {
@@ -463,16 +478,31 @@ header {
 
 .header-content {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   max-width: 1440px;
+  padding: 0 1rem;
   margin: auto;
+}
+
+.dark-mode-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+.dark-mode-btn svg {
+  margin: 0 0.75rem 0 0;
 }
 
 footer {
   margin: 2rem;
   display: flex;
   justify-content: center;
+  text-align: center;
 }
 
 .back-btn {

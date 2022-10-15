@@ -6,5 +6,19 @@ header {
 .header-content {
     @include space-between;
     max-width: 1440px;
+    padding: 0 1rem;
     margin: auto;
+}
+
+.dark-mode-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+
+    & svg {
+        margin: 0 .75rem 0 0;
+    }
 }

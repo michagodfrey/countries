@@ -13,36 +13,48 @@ body {
 }
 
 section {
-    @include space-between;
+    padding: 1rem;
 }
 
 form {
-    padding: 1rem;
-    margin: 1rem 0;
-    width: 100%;
-    max-width: 600px;
     display: flex;
-    justify-content: center;
-    align-self: center;
+    flex-direction: column;
     position: relative;
-}
 
-.search-icon {
-    position: absolute;
-    left: 2rem;
-    bottom: 2.25rem;
-    color: white;
-    font-size: 1.5rem;
+    @include break-point {
+            @include space-between;
+        }
+
+    & svg {
+        fill: $light-text;
+        position: absolute;
+        left: 20px;  
+        top: 20px;
+    }
 }
 
 input {
-    width: 100%;
-    height: 4rem;
-    background: rgba(255, 255, 255, 0.2);
-    border: 5px solid white;
-    border-radius: 30px;
+    margin-bottom: 1rem;
+    background: $white;
+    border: 2px solid $white;
+    border-radius: 5px;
+    box-shadow: $box-shadow;
     padding: 1rem 2.5rem;
-    font-size: 1.25rem;
+
+    @include break-point {
+        width: 600px;
+    }
+}
+
+select {
+    width: 200px;
+    color: $light-text;
+    background-color: $white;
+    border: 2px solid $white;
+    border-radius: 5px;
+    box-shadow: $box-shadow;
+    padding: 1rem;
+    margin-bottom: 1rem;
 }
 
 .container {
