@@ -1,61 +1,40 @@
 .back-btn {
-    border: 1px solid black;
-    padding: 1rem;
-    margin: 1rem;
+    border: $white;
     box-shadow: $box-shadow;
+    padding: .75rem 2rem;
+    margin-left: 2rem;
+    display: flex;
+    align-items: center;
+    max-width: fit-content;
+
+    @include desktop-screen {
+            margin-left: 4rem;
+        }
+
+    & svg {
+        margin-right: 1rem;
+    }
 }
 
 .country {
-    border: 1px solid blue;
-
     padding: 2rem;
 
-    @include break-point {
+    @include desktop-screen {
         display: flex;
     }
 
 }
 
-.country__details-wrapper {
-    border: 1px solid black;
-
-    max-width: 600px;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    @include break-point {
-            max-width: 900px;
-        }
-
-    // padding: 1rem;
-
-    // display: flex;
-}
-
-.country__details {
-    border: 1px solid red;
-
-    
-
-    @include break-point {
-            display: flex;
-            flex: 1 1 50%;
-        }
-}
-
 .country__flag {
-    background-color: red;
-
     display: flex;
     justify-content: center;
 
-    @include break-point {
-            display: flex;
-            max-width: 50%;
-            flex: 1 1 50%;
-        }
+    @include desktop-screen {
+        display: flex;
+        max-width: 50%;
+        flex: 1 1 50%;
+        padding: 2rem;
+    }
 }
 
 .country__flag img {
@@ -63,25 +42,67 @@
     max-width: 600px;
     height: auto;
 
-
-    @include break-point {
+    @include desktop-screen {
         max-width: 900px;
     }
 }
 
-.country__borders {
-    border: 1px solid green;
-    // display: flex;
-    // flex-direction: row;
+.country__info {
+
+    @include desktop-screen {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
 }
 
-li {
-    list-style: none;
-    padding: .5rem 1.5rem;
-    margin: .5rem .25rem;
-    border: 1px solid black;
-    box-shadow: $box-shadow;
-    display: inline-flex;
-    flex-wrap: wrap;
-    cursor: pointer;
+.country__info-wrapper {
+    max-width: 600px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @include desktop-screen {
+            max-width: 900px;
+            margin: 1rem;
+        }
+}
+
+.country__details {
+    line-height: 2;
+    
+    @include desktop-screen {
+            display: flex;
+            flex: 1 1 50%;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+}
+
+.country__borders {
+
+    & ul {
+        padding-left: 0px;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    & li {
+        list-style: none;
+        padding: .5rem 1.5rem;
+        margin: .5rem .25rem;
+        border: 1px solid $light-input;
+        border-radius: 5px;
+        box-shadow: $box-shadow;
+        cursor: pointer;
+    }
+
+    @include desktop-screen {
+        display: flex;
+        margin-top: 1rem;
+    }
+
 }

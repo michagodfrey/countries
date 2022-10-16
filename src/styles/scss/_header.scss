@@ -1,13 +1,26 @@
 header {
     background-color: $white;
     box-shadow: $box-shadow;
+    margin-bottom: 2.5rem;
 }
 
 .header-content {
-    @include space-between;
+    @include flex-space-between;
     max-width: 1440px;
     padding: 0 1rem;
     margin: auto;
+
+    @include desktop-screen {
+        padding: 0 4rem;
+    }
+
+    & h1 {
+        font-size: 1rem;
+
+        @include desktop-screen {
+            font-size: 1.5rem;
+        }
+    }
 }
 
 .dark-mode-btn {
@@ -17,6 +30,11 @@ header {
     font-weight: 600;
     display: flex;
     align-items: center;
+    font-size: .75rem;
+
+    @include desktop-screen {
+        font-size: .9rem;
+    }
 
     & svg {
         margin: 0 .75rem 0 0;

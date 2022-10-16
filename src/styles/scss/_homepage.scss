@@ -10,10 +10,11 @@ body {
     font-size: 14px;
     max-width: 1440px;
     margin: auto;
-}
+    padding: 0 1rem;
 
-section {
-    padding: 1rem;
+    @include desktop-screen {
+            padding: 0 4rem;
+        }
 }
 
 form {
@@ -21,8 +22,8 @@ form {
     flex-direction: column;
     position: relative;
 
-    @include break-point {
-            @include space-between;
+    @include desktop-screen {
+            @include flex-space-between;
         }
 
     & svg {
@@ -34,14 +35,14 @@ form {
 }
 
 input {
-    margin-bottom: 1rem;
     background: $white;
-    border: 2px solid $white;
+    border: $white;
     border-radius: 5px;
     box-shadow: $box-shadow;
     padding: 1rem 2.5rem;
+    margin-bottom: 2.25rem;
 
-    @include break-point {
+    @include desktop-screen {
         width: 600px;
     }
 }
@@ -50,18 +51,21 @@ select {
     width: 200px;
     color: $light-text;
     background-color: $white;
-    border: 2px solid $white;
+    border-color: $white;
     border-radius: 5px;
     box-shadow: $box-shadow;
     padding: 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 2.25rem;
 }
 
 .container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    
+    justify-content: center;
+
+    @include tablet-screen {
+        justify-content: space-between;
+    }
 }
 
 .container__item {
@@ -70,11 +74,13 @@ select {
     margin-bottom: 3rem;
     padding-bottom: 2.5rem;
     box-shadow: $box-shadow;
+    max-width: 300px;
 }
 
 .container__flag {
     max-height: 200px;
     max-width: 300px;
+    border-radius: 5px 5px 0 0;
 }
 
 .container__text {

@@ -35,8 +35,8 @@ const Country = () => {
         return (
           <>
             <Header />
-            <Link to={"/"}>
-              <div className="back-btn">Back</div>
+            <Link to={"/"} className="back-btn">
+              <FaArrowLeft /> Back
             </Link>
             <div className="loader"></div>
             <Footer />
@@ -49,8 +49,8 @@ const Country = () => {
           <>
             <Header />
             <section>
-              <Link to={"/"}>
-                <div className="back-btn">Back</div>
+              <Link to={"/"} className="back-btn">
+                <FaArrowLeft /> Back
               </Link>
             </section>
             <div className="error-msg">Error loading data :(</div>
@@ -64,8 +64,8 @@ const Country = () => {
     <>
       <Header />
       <section>
-        <Link to={"/"}>
-          <div className="back-btn"><FaArrowLeft /> Back</div>
+        <Link to={"/"} className="back-btn">
+            <FaArrowLeft /> Back
         </Link>
       </section>
       <main>
@@ -94,62 +94,70 @@ const Country = () => {
               <div className="country__flag">
                 <img src={flags.png} alt={name.common} />
               </div>
-              <div className="country__details-wrapper">
-                <div className="country__details">
-                  <div>
-                    <h2>{name.common}</h2>
+              <div className="country__info">
+                <div className="country__info-wrapper">
+                  <h2>{name.common}</h2>
+                  <div className="country__details">
                     <div>
-                      <b>Population: </b>
-                      {population.toLocaleString()}
+                      <div>
+                        <b>Population: </b>
+                        {population.toLocaleString()}
+                      </div>
+                      <div>
+                        <b>Region: </b>
+                        {region}
+                      </div>
+                      <div>
+                        <b>Subregion: </b>
+                        {subregion}
+                      </div>
+                      <div>
+                        <b>Capital: </b>
+                        {capital}
+                      </div>
                     </div>
+                    <br></br>
                     <div>
-                      <b>Region: </b>
-                      {region}
-                    </div>
-                    <div>
-                      <b>Subregion: </b>
-                      {subregion}
-                    </div>
-                    <div>
-                      <b>Capital: </b>
-                      {capital}
+                      <div>
+                        <b>Top level domain: </b>
+                        {tld}
+                      </div>
+                      <div>
+                        <b>Currencies: </b>
+                        {currencyList.map((currency) => {
+                          // currency.replace(/,\s*$/, "");
+                          return <>{currency},</>;
+                        })}
+                      </div>
+                      <div>
+                        <b>Languages: </b>
+                        {languageList.map((language) => {
+                          // language.slice(0, -1);
+                          return <>{language},</>;
+                        })}
+                      </div>
                     </div>
                   </div>
-                  <div>
-                    <div>
-                      <b>Top level domain: </b>
-                      {tld}
-                    </div>
-                    <div>
-                      <b>Currencies: </b>
-                      {currencyList.map((currency) => {
-                        // currency.replace(/,\s*$/, "");
-                        return <>{currency},</>;
-                      })}
-                    </div>
-                    <div>
-                      <b>Languages: </b>
-                      {languageList.map((language) => {
-                        // language.slice(0, -1);
-                        return <>{language},</>;
-                      })}
-                    </div>
+                  <div className="country__borders">
+                    <h3>{borders ? "Border Countries:" : null}</h3>
+                    <ul>
+                      {borders
+                        ? borders.map((border) => {
+                            return (
+                              <li>
+                                <Link
+                                  key={border}
+                                  to={`/${border.toUpperCase()}`}
+                                >
+                                  {border}
+                                </Link>
+                              </li>
+                            );
+                          })
+                        : null}
+                    </ul>
                   </div>
                 </div>
-                <h3>{borders ? "Border Countries" : null}</h3>
-                <ul className="country__borders">
-                  {borders
-                    ? borders.map((border) => {
-                        return (
-                          <li>
-                            <Link key={border} to={`/${border.toUpperCase()}`}>
-                              {border}
-                            </Link>
-                          </li>
-                        );
-                      })
-                    : null}
-                </ul>
               </div>
             </div>
           );

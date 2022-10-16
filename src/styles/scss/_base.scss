@@ -1,10 +1,10 @@
 // color variables
-$dark-el: hsl(209, 23%, 22%);
-$dark-bg: hsl(207, 26%, 17%);
-$light-input: hsl(0, 0%, 52%);
-$white: hsl(0, 0%, 100%);
-$light-bg: hsl(0, 0%, 98%);
-$light-text: hsl(200, 15%, 8%);
+$dark-el: hsl(209, 23%, 22%); //dark mode elements
+$dark-bg: hsl(207, 26%, 17%); // dm background
+$light-input: hsl(0, 0%, 52%); // light mode text
+$white: hsl(0, 0%, 100%); // lm input
+$light-bg: hsl(0, 0%, 98%); // lm background
+$light-text: hsl(200, 15%, 8%); // dm text, lm elements
 
 // other variables
 $box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -21,7 +21,7 @@ a {
     text-decoration: none;
     
     &:visited {
-        color: royalblue;
+        color: blueviolet;
     }
 
 }
@@ -36,7 +36,7 @@ a {
 
 // }
 
-// loading animation and error message
+// loading animation and error message classes
 .loader {
         margin: 2rem auto;
         border: 1rem solid $light-bg;
@@ -77,14 +77,20 @@ a {
 }
 
 // mixins
-@mixin space-between {
+@mixin flex-space-between {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
 
-@mixin break-point {
+@mixin tablet-screen {
+    @media (min-width: 600px) {
+        @content;
+    }
+}
+
+@mixin desktop-screen {
     @media (min-width: 992px) {
         @content;
     }
