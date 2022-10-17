@@ -10,6 +10,22 @@ const Homepage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
+   const [theme, setTheme] = useState("light-theme");
+
+   const toggleTheme = () => {
+     if (theme === "light-theme") {
+       setTheme("dark-theme");
+     } else {
+       setTheme("light-theme");
+     }
+   };
+
+   useEffect(() => {
+     document.documentElement.className = theme;
+     console.log(theme);
+     console.log(document.documentElement);
+   }, [theme]);
+
   useEffect(() => {
     setLoading(true);
     setError(false);
@@ -55,6 +71,7 @@ const Homepage = () => {
       <Header />
       <main className="homepage__main">
         <section>
+          <button onClick={toggleTheme}>dark mode</button>
           <form>
             {<FaSearch />}
             <input

@@ -1,5 +1,4 @@
 .back-btn {
-    border: $white;
     box-shadow: $box-shadow;
     padding: .75rem 2rem;
     margin-left: 2rem;
@@ -94,7 +93,7 @@
         list-style: none;
         padding: .5rem 1.5rem;
         margin: .5rem .25rem;
-        border: 1px solid $light-input;
+        border: 1px solid red;
         border-radius: 5px;
         box-shadow: $box-shadow;
         cursor: pointer;

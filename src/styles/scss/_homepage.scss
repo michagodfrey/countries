@@ -1,5 +1,5 @@
 body {
-    background-color: $light-bg;
+    background-color: var(--color-background);
 }
 
 .homepage {
@@ -27,7 +27,7 @@ form {
         }
 
     & svg {
-        fill: $light-text;
+        fill: var(--color-text);
         position: absolute;
         left: 20px;  
         top: 20px;
@@ -35,8 +35,8 @@ form {
 }
 
 input {
-    background: $white;
-    border: $white;
+    background: var(--color-input);
+    border: #fff;
     border-radius: 5px;
     box-shadow: $box-shadow;
     padding: 1rem 2.5rem;
@@ -47,11 +47,14 @@ input {
     }
 }
 
+input::placeholder {
+    color: var(--color-text);
+}
+
 select {
     width: 200px;
-    color: $light-text;
-    background-color: $white;
-    border-color: $white;
+    background-color: var(--color-input);
+    border-color: #fff;
     border-radius: 5px;
     box-shadow: $box-shadow;
     padding: 1rem;
@@ -62,14 +65,15 @@ select {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-
+    
     @include tablet-screen {
         justify-content: space-between;
     }
 }
 
 .container__item {
-    background-color: $white;
+    background-color: var(--color-element);
+    color: var(--color-text);
     border-radius: 5px;
     margin-bottom: 3rem;
     padding-bottom: 2.5rem;

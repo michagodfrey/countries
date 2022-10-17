@@ -1,10 +1,17 @@
-// color variables
-$dark-el: hsl(209, 23%, 22%); //dark mode elements
-$dark-bg: hsl(207, 26%, 17%); // dm background
-$light-input: hsl(0, 0%, 52%); // light mode text
-$white: hsl(0, 0%, 100%); // lm input
-$light-bg: hsl(0, 0%, 98%); // lm background
-$light-text: hsl(200, 15%, 8%); // dm text, lm elements
+// light and dark theme classes
+.dark-theme {
+    --color-background: hsl(207, 26%, 17%);
+    --color-text: hsl(0, 0%, 100%);
+    --color-element: hsl(209, 23%, 22%);
+    --color-input: hsl(0, 0%, 52%);
+}
+
+.light-theme {
+    --color-background: hsl(0, 0%, 98%);
+    --color-text: hsl(200, 15%, 8%);
+    --color-element: hsl(0, 0%, 100%);
+    --color-input: hsl(0, 0%, 100%);
+}
 
 // other variables
 $box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -14,7 +21,7 @@ $box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 
 * {
     font-family: 'Nunito Sans', sans-serif;
-    color: $light-text;
+    color: var(--color-text);
 }
 
 a {
@@ -23,26 +30,21 @@ a {
     &:visited {
         color: blueviolet;
     }
-
 }
 
-// h1 {
-//     font-size: .5rem;
-
-//     @include break-point {
-//         font-size: 1rem;
-//     } 
-        
-
-// }
 
 // loading animation and error message classes
 .loader {
         margin: 2rem auto;
-        border: 1rem solid $light-bg;
+        // border: 1rem solid $light-bg;
+        // border-top: 1rem solid $light-text;
+        // border-bottom: 1rem solid $light-text;
+
+        border: 1rem solid var(--color-background);
+        border-top: 1rem solid var(--color-text);
+        border-bottom: 1rem solid var(--color-text);
+
         border-radius: 50%;
-        border-top: 1rem solid $light-text;
-        border-bottom: 1rem solid $light-text;
         width: 80px;
         height: 80px;
         -webkit-animation: spin 2s linear infinite;
