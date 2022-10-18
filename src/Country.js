@@ -21,7 +21,7 @@ const Country = () => {
         .then((res) => {
           setLoading(false);
           setCountry(res.data);
-          console.log(res.data);
+          // console.log(res.data);
         })
         .catch((error) => {
           setError(true);
@@ -88,7 +88,6 @@ const Country = () => {
             (currency) => currencies[currency].name
           );
           const languageList = Object.values(languages);
-          console.log(currencyObj);
           return (
             <div key={cca3} className="country">
               <div className="country__flag">

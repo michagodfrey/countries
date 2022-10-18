@@ -9,22 +9,7 @@ const Homepage = () => {
   const [countries, setCountries] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-
-   const [theme, setTheme] = useState("light-theme");
-
-   const toggleTheme = () => {
-     if (theme === "light-theme") {
-       setTheme("dark-theme");
-     } else {
-       setTheme("light-theme");
-     }
-   };
-
-   useEffect(() => {
-     document.documentElement.className = theme;
-     console.log(theme);
-     console.log(document.documentElement);
-   }, [theme]);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     setLoading(true);
@@ -43,9 +28,19 @@ const Homepage = () => {
       });
   }, []);
 
-  // filter by region set
-  const allRegions = [...new Set(countries.map((country) => country.region))];
+  const handleChange = (e) => {
+    setSearch(e.target.value);
 
+  }
+
+  const filterCountries = countries.filter((country) => {
+    return country.name.common.toLowerCase().includes(search.toLowerCase());
+  })
+
+  // filter by region set
+  // const allRegions = [...new Set(countries.map((country) => country.region))];
+
+  // loading and error displays
   if (loading) {
     return (
       <>
@@ -71,20 +66,19 @@ const Homepage = () => {
       <Header />
       <main className="homepage__main">
         <section>
-          <button onClick={toggleTheme}>dark mode</button>
           <form>
             {<FaSearch />}
             <input
               type="text"
               name="search"
               placeholder="Search for a country..."
+              onChange={handleChange}
             />
               <select name="filter">
                 <option value="" disabled selected>
                   Filter by Region
                 </option>
                 {countries.map((country) => {
-                  const { region } = country;
                   return (
                     <>
                       <option>{country.region}</option>;
@@ -95,7 +89,7 @@ const Homepage = () => {
           </form>
         </section>
         <div className="container">
-          {countries.map((country) => {
+          {filterCountries.map((country) => {
             const { cca3, flags, name, population, region, capital } = country;
             return (
               <div className="container__item" key={cca3}>
