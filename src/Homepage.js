@@ -28,17 +28,49 @@ const Homepage = () => {
       });
   }, []);
 
-  const handleChange = (e) => {
+  // region set for select input
+  const allRegions = [
+    "All",
+    ...new Set(countries.map((country) => country.region)),
+  ];
+
+  // filter by region
+  const handleSelect = (e) => {
+    const regions = Array.from(
+      document.querySelectorAll(".container__region span")
+    );
+    regions.forEach((region) => {
+      const country = region.innerHTML.toLowerCase();
+      if (e.target.value === "All") {
+        region.closest(".container__item").classList.remove("hidden");
+      } else if (country !== e.target.value.toLocaleLowerCase()) {
+        region.closest(".container__item").classList.add("hidden");
+      } else {
+        region.closest(".container__item").classList.remove("hidden");
+      }
+    });
+  };
+
+  // reset region filter for better search
+  const resetFilter = () => {
+    const containerItems = document.querySelectorAll(".container__item");
+    containerItems.forEach((item) => {
+      item.classList.remove("hidden");
+    });
+  };
+
+  // search country
+  const handleSearch = (e) => {
+    const select = document.querySelector("select");
+    select.value = "All";
+    resetFilter();
     setSearch(e.target.value);
-
-  }
-
+  };
+  
+  // display search results or all countries if search is empty
   const filterCountries = countries.filter((country) => {
     return country.name.common.toLowerCase().includes(search.toLowerCase());
-  })
-
-  // filter by region set
-  // const allRegions = [...new Set(countries.map((country) => country.region))];
+  });
 
   // loading and error displays
   if (loading) {
@@ -72,20 +104,16 @@ const Homepage = () => {
               type="text"
               name="search"
               placeholder="Search for a country..."
-              onChange={handleChange}
+              onChange={handleSearch}
             />
-              <select name="filter">
-                <option value="" disabled selected>
-                  Filter by Region
-                </option>
-                {countries.map((country) => {
-                  return (
-                    <>
-                      <option>{country.region}</option>;
-                    </>
-                  );
-                })}
-              </select>
+            <select name="filter" onChange={handleSelect}>
+              <option value="" disabled selected>
+                Filter by Region
+              </option>
+              {allRegions.map((region) => {
+                return <option>{region}</option>;
+              })}
+            </select>
           </form>
         </section>
         <div className="container">
@@ -106,9 +134,9 @@ const Homepage = () => {
                     <b>Population: </b>
                     {population.toLocaleString()}
                   </div>
-                  <div>
+                  <div className="container__region">
                     <b>Region: </b>
-                    {region}
+                    <span>{region}</span>
                   </div>
                   <div>
                     <b>Capital: </b>

@@ -16,12 +16,18 @@
 // other variables
 $box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 
-// text and anchors
+// font import
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
 
 * {
     font-family: 'Nunito Sans', sans-serif;
     color: var(--color-text);
+}
+
+// base elements
+
+body {
+    transition: all .1s linear;
 }
 
 a {
@@ -38,7 +44,6 @@ a {
         border: 1rem solid var(--color-background);
         border-top: 1rem solid var(--color-text);
         border-bottom: 1rem solid var(--color-text);
-
         border-radius: 50%;
         width: 80px;
         height: 80px;
@@ -71,6 +76,11 @@ a {
     font-size: 2rem;
     text-align: center;
     margin-top: 2rem;
+}
+
+//hide class 
+.hidden {
+    display: none;
 }
 
 // mixins

@@ -357,6 +357,10 @@ template {
   color: var(--color-text);
 }
 
+body {
+  transition: all 0.1s linear;
+}
+
 a {
   text-decoration: none;
 }
@@ -397,6 +401,10 @@ a:visited {
   font-size: 2rem;
   text-align: center;
   margin-top: 2rem;
+}
+
+.hidden {
+  display: none;
 }
 
 body {
@@ -440,7 +448,7 @@ form svg {
 }
 
 input {
-  background: var(--color-input);
+  background: var(--color-element);
   border: #fff;
   border-radius: 5px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -459,8 +467,8 @@ input::placeholder {
 
 select {
   width: 200px;
-  background-color: var(--color-input);
-  border-color: #fff;
+  background-color: var(--color-element);
+  border: none;
   border-radius: 5px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   padding: 1rem;
@@ -499,7 +507,7 @@ select {
 }
 
 header {
-  background-color: var(--color-background);
+  background-color: var(--color-element);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   margin-bottom: 2.5rem;
 }

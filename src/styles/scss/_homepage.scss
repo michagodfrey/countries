@@ -35,7 +35,7 @@ form {
 }
 
 input {
-    background: var(--color-input);
+    background: var(--color-element);
     border: #fff;
     border-radius: 5px;
     box-shadow: $box-shadow;
@@ -53,8 +53,8 @@ input::placeholder {
 
 select {
     width: 200px;
-    background-color: var(--color-input);
-    border-color: #fff;
+    background-color: var(--color-element);
+    border: none;
     border-radius: 5px;
     box-shadow: $box-shadow;
     padding: 1rem;
