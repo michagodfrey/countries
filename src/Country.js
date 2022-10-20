@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import uuid from "react-uuid";
 import Header from "./Header";
 import { FaArrowLeft } from "react-icons/fa";
 import Footer from "./Footer";
@@ -11,7 +12,7 @@ const Country = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
-    // console.log(params)
+    const navigate = useNavigate();
 
     useEffect(() => {
       setLoading(true);
@@ -21,7 +22,7 @@ const Country = () => {
         .then((res) => {
           setLoading(false);
           setCountry(res.data);
-          // console.log(res.data);
+          console.log(res.data);
         })
         .catch((error) => {
           setError(true);
@@ -64,9 +65,9 @@ const Country = () => {
     <>
       <Header />
       <section>
-        <Link to={"/"} className="back-btn">
+        <div onClick={() => navigate(-1)} className="back-btn">
             <FaArrowLeft /> Back
-        </Link>
+        </div>
       </section>
       <main>
         {country.map((state) => {
@@ -124,30 +125,25 @@ const Country = () => {
                       <div>
                         <b>Currencies: </b>
                         {currencyList.map((currency) => {
-                          // currency.replace(/,\s*$/, "");
-                          return <>{currency},</>;
+                          return <span key={uuid()}>{currency} </span>;
                         })}
                       </div>
                       <div>
                         <b>Languages: </b>
                         {languageList.map((language) => {
-                          // language.slice(0, -1);
-                          return <>{language},</>;
+                          return <span key={uuid()}>{language}, </span>;
                         })}
                       </div>
                     </div>
                   </div>
                   <div className="country__borders">
-                    <h3>{borders ? "Border Countries:" : null}</h3>
+                    <b>{borders ? "Border Countries:" : null}</b>
                     <ul>
                       {borders
                         ? borders.map((border) => {
                             return (
-                              <li>
-                                <Link
-                                  key={border}
-                                  to={`/${border.toUpperCase()}`}
-                                >
+                              <li key={border}>
+                                <Link to={`/${border.toUpperCase()}`}>
                                   {border}
                                 </Link>
                               </li>

@@ -342,14 +342,12 @@ template {
   --color-background: hsl(207, 26%, 17%);
   --color-text: hsl(0, 0%, 100%);
   --color-element: hsl(209, 23%, 22%);
-  --color-input: hsl(0, 0%, 52%);
 }
 
 .light-theme {
   --color-background: hsl(0, 0%, 98%);
   --color-text: hsl(200, 15%, 8%);
   --color-element: hsl(0, 0%, 100%);
-  --color-input: hsl(0, 0%, 100%);
 }
 
 * {
@@ -417,7 +415,7 @@ body {
 
 .homepage__main {
   font-size: 14px;
-  max-width: 1440px;
+  max-width: 1390px;
   margin: auto;
   padding: 0 1rem;
 }
@@ -447,6 +445,10 @@ form svg {
   top: 20px;
 }
 
+label {
+  font-size: 0px;
+}
+
 input {
   background: var(--color-element);
   border: #fff;
@@ -454,6 +456,7 @@ input {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   padding: 1rem 2.5rem;
   margin-bottom: 2.25rem;
+  max-width: 400px;
 }
 @media (min-width: 992px) {
   input {
@@ -479,6 +482,7 @@ select {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  max-width: 1500px;
 }
 @media (min-width: 600px) {
   .container {
@@ -493,13 +497,15 @@ select {
   margin-bottom: 3rem;
   padding-bottom: 2.5rem;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  max-width: 300px;
+  width: 280px;
 }
 
 .container__flag {
-  max-height: 200px;
-  max-width: 300px;
+  max-height: 186.7px;
+  max-width: 280px;
   border-radius: 5px 5px 0 0;
+  display: block;
+  margin: auto;
 }
 
 .container__text {
@@ -510,6 +516,12 @@ header {
   background-color: var(--color-element);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   margin-bottom: 2.5rem;
+  padding: 1rem 0;
+}
+@media (min-width: 992px) {
+  header {
+    padding: 0;
+  }
 }
 
 .header-content {
@@ -517,7 +529,7 @@ header {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  max-width: 1440px;
+  max-width: 1390px;
   padding: 0 1rem;
   margin: auto;
 }
@@ -565,11 +577,16 @@ footer a {
 
 .back-btn {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  background-color: var(--color-element);
+  color: var(--color-text);
   padding: 0.75rem 2rem;
   margin-left: 2rem;
   display: flex;
   align-items: center;
   max-width: fit-content;
+}
+.back-btn:visited {
+  color: var(--color-text);
 }
 @media (min-width: 992px) {
   .back-btn {
@@ -586,6 +603,7 @@ footer a {
 @media (min-width: 992px) {
   .country {
     display: flex;
+    justify-content: space-around;
   }
 }
 
@@ -596,7 +614,7 @@ footer a {
 @media (min-width: 992px) {
   .country__flag {
     display: flex;
-    max-width: 50%;
+    max-width: 40%;
     flex: 1 1 50%;
     padding: 2rem;
   }
@@ -609,7 +627,7 @@ footer a {
 }
 @media (min-width: 992px) {
   .country__flag img {
-    max-width: 900px;
+    max-width: 700px;
   }
 }
 
@@ -618,6 +636,7 @@ footer a {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    flex: 1 1 50%;
   }
 }
 
@@ -627,10 +646,12 @@ footer a {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-self: center;
 }
 @media (min-width: 992px) {
   .country__info-wrapper {
-    max-width: 900px;
+    width: 100%;
+    max-width: 650px;
     margin: 1rem;
   }
 }
@@ -641,23 +662,25 @@ footer a {
 @media (min-width: 992px) {
   .country__details {
     display: flex;
-    flex: 1 1 50%;
     justify-content: space-between;
     margin-bottom: 1rem;
   }
 }
 
+.country__borders {
+  align-items: center;
+}
 .country__borders ul {
-  padding-left: 0px;
+  padding-left: 0.5rem;
   margin: 0;
   display: flex;
   flex-wrap: wrap;
 }
 .country__borders li {
+  background-color: var(--color-element);
   list-style: none;
   padding: 0.5rem 1.5rem;
   margin: 0.5rem 0.25rem;
-  border: 1px solid red;
   border-radius: 5px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   cursor: pointer;

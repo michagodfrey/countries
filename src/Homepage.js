@@ -36,6 +36,8 @@ const Homepage = () => {
 
   // filter by region
   const handleSelect = (e) => {
+    // setSearch("");
+    // document.getElementById("search").value = "";
     const regions = Array.from(
       document.querySelectorAll(".container__region span")
     );
@@ -51,7 +53,7 @@ const Homepage = () => {
     });
   };
 
-  // reset region filter for better search
+  // reset region filter for better search function
   const resetFilter = () => {
     const containerItems = document.querySelectorAll(".container__item");
     containerItems.forEach((item) => {
@@ -101,17 +103,20 @@ const Homepage = () => {
           <form>
             {<FaSearch />}
             <input
+              id="search"
               type="text"
               name="search"
               placeholder="Search for a country..."
               onChange={handleSearch}
             />
-            <select name="filter" onChange={handleSelect}>
-              <option value="" disabled selected>
+            <label htmlFor="search">Search countries</label>
+            <label htmlFor="filter">Filter by region</label>
+            <select id="filter" name="filter" onChange={handleSelect}>
+              <option disabled selected>
                 Filter by Region
               </option>
               {allRegions.map((region) => {
-                return <option>{region}</option>;
+                return <option key={region}>{region}</option>;
               })}
             </select>
           </form>

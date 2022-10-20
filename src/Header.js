@@ -1,21 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { FaRegMoon, FaSun } from "react-icons/fa";
+import { useGlobalContext } from "./context";
 
 const Header = () => {
-  // toggle light and dark mode
-  const [theme, setTheme] = useState("light-theme");
-
-  useEffect(() => {
-    document.documentElement.className = theme;
-  }, [theme]);
-
-  const toggleTheme = () => {
-    if (theme === "light-theme") {
-      setTheme("dark-theme");
-    } else {
-      setTheme("light-theme");
-    }
-  };
+  const { theme, toggleTheme } = useGlobalContext();
 
   return (
     <header>

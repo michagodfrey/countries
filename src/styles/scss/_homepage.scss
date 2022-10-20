@@ -8,7 +8,7 @@ body {
 
 .homepage__main {
     font-size: 14px;
-    max-width: 1440px;
+    max-width: 1390px;
     margin: auto;
     padding: 0 1rem;
 
@@ -34,6 +34,10 @@ form {
     }
 }
 
+label {
+    font-size: 0px;
+}
+
 input {
     background: var(--color-element);
     border: #fff;
@@ -41,6 +45,7 @@ input {
     box-shadow: $box-shadow;
     padding: 1rem 2.5rem;
     margin-bottom: 2.25rem;
+    max-width: 400px;
 
     @include desktop-screen {
         width: 600px;
@@ -65,6 +70,7 @@ select {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    max-width: 1500px;
     
     @include tablet-screen {
         justify-content: space-between;
@@ -78,13 +84,15 @@ select {
     margin-bottom: 3rem;
     padding-bottom: 2.5rem;
     box-shadow: $box-shadow;
-    max-width: 300px;
+    width: 280px;
 }
 
 .container__flag {
-    max-height: 200px;
-    max-width: 300px;
+    max-height: 186.7px;
+    max-width: 280px;
     border-radius: 5px 5px 0 0;
+    display: block;
+    margin: auto;
 }
 
 .container__text {

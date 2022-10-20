@@ -2,11 +2,16 @@ header {
     background-color: var(--color-element);
     box-shadow: $box-shadow;
     margin-bottom: 2.5rem;
+    padding: 1rem 0;
+
+    @include desktop-screen {
+        padding: 0;
+    }
 }
 
 .header-content {
     @include flex-space-between;
-    max-width: 1440px;
+    max-width: 1390px;
     padding: 0 1rem;
     margin: auto;
 
