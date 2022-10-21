@@ -19,7 +19,7 @@ const Homepage = () => {
       .then((response) => {
         setLoading(false);
         setCountries(response.data);
-        // console.log(response.data);
+        console.log(response.data);
       })
       .catch((error) => {
         setError(true);
@@ -122,7 +122,7 @@ const Homepage = () => {
           </form>
         </section>
         <div className="container">
-          {filterCountries.map((country) => {
+          {filterCountries.sort().map((country) => {
             const { cca3, flags, name, population, region, capital } = country;
             return (
               <div className="container__item" key={cca3}>

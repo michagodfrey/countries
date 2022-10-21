@@ -584,6 +584,7 @@ footer a {
   display: flex;
   align-items: center;
   max-width: fit-content;
+  cursor: pointer;
 }
 .back-btn:visited {
   color: var(--color-text);
@@ -684,6 +685,9 @@ footer a {
   border-radius: 5px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   cursor: pointer;
+}
+.country__borders a:visited {
+  color: var(--color-text);
 }
 @media (min-width: 992px) {
   .country__borders {

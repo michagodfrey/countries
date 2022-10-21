@@ -12,6 +12,8 @@ const Country = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
+    // const [borders, setBorders] = useState([]);
+
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -31,6 +33,11 @@ const Country = () => {
         });
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    // const getName = (e) => {
+    //   const borderCountry = `https://restcountries.com/v3.1/name/${e.target.innerHTML}`;
+    //   console.log(borderCountry)
+    // }
 
     if (loading) {
         return (
@@ -89,6 +96,23 @@ const Country = () => {
             (currency) => currencies[currency].name
           );
           const languageList = Object.values(languages);
+          
+          // const borderList = borders.map(
+          //   (border) => `https://restcountries.com/v3.1/name/${border}`
+          // );
+
+          // console.log(borderList)
+
+          // const borderNames = () => {
+          //   fetch(borderList[0])
+          //   .then(response => response.json())
+          //   .then(data => {
+          //     data.borders.map(country => {
+          //       return console.log(country)
+          //     })
+          //   })
+          // }
+
           return (
             <div key={cca3} className="country">
               <div className="country__flag">
@@ -143,9 +167,7 @@ const Country = () => {
                         ? borders.map((border) => {
                             return (
                               <li key={border}>
-                                <Link to={`/${border.toUpperCase()}`}>
-                                  {border}
-                                </Link>
+                                <Link to={border}>{border}</Link>
                               </li>
                             );
                           })
