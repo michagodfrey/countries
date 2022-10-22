@@ -20,11 +20,12 @@ const Country = () => {
       setLoading(true);
       setError(false);
       axios
-        .get(`https://restcountries.com/v3.1/alpha/${params.cca3}`)
+        .get(`https://restcountries.com/v3.1/name/${params.name}`)
         .then((res) => {
           setLoading(false);
           setCountry(res.data);
-          console.log(res.data);
+          // setBorders(res.data.borders)
+          // console.log(res.data);
         })
         .catch((error) => {
           setError(true);
@@ -34,10 +35,35 @@ const Country = () => {
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    // const getName = (e) => {
-    //   const borderCountry = `https://restcountries.com/v3.1/name/${e.target.innerHTML}`;
-    //   console.log(borderCountry)
-    // }
+     // get the common name from the API with the border name somehow
+      // the border name is the same as cca3
+    // const borderCountries = country.borders;
+    // console.log(borderCountries)
+
+     const border = country?.borders !== undefined ? country?.borders : null;
+
+     //To filter the bordered countries
+     const bord = country.filter((all) => border?.includes(all.cca3));
+     
+    const borders = () => {
+      return (
+        <>
+          {country?.borders !== undefined &&
+            bord.map((border) => (
+              <div key={border?.name?.official}>
+                <Link to={`/${border.name.common}`}>
+                  <div>
+                    {border?.name?.common}
+                  </div>
+                </Link>
+              </div>
+            ))}
+        </>
+      );
+    };
+
+    console.log(bord)
+  
 
     if (loading) {
         return (
@@ -65,7 +91,6 @@ const Country = () => {
             <Footer />
           </>
         );
-
     }
 
   return (
@@ -91,32 +116,24 @@ const Country = () => {
             languages,
             borders,
           } = state;
-          const currencyObj = Object.keys(currencies);
-          const currencyList = currencyObj.map(
-            (currency) => currencies[currency].name
-          );
-          const languageList = Object.values(languages);
           
-          // const borderList = borders.map(
-          //   (border) => `https://restcountries.com/v3.1/name/${border}`
-          // );
-
-          // console.log(borderList)
-
-          // const borderNames = () => {
-          //   fetch(borderList[0])
-          //   .then(response => response.json())
-          //   .then(data => {
-          //     data.borders.map(country => {
-          //       return console.log(country)
-          //     })
+          
+          // or do the above here
+          // const borderCountries = borders.map((borderCountry) => {
+          //   axios.get(`https://restcountries.com/v3.1/alpha/${borderCountry}`)
+          //   .then((res) => {
+          //     setBorders(res.data);
           //   })
-          // }
+            
+            
+          // });
+
+          // console.log(borders)
 
           return (
             <div key={cca3} className="country">
               <div className="country__flag">
-                <img src={flags.png} alt={name.common} />
+                <img src={flags.png} alt={`Flag of ${name.common}`} />
               </div>
               <div className="country__info">
                 <div className="country__info-wrapper">
@@ -125,7 +142,7 @@ const Country = () => {
                     <div>
                       <div>
                         <b>Population: </b>
-                        {population.toLocaleString()}
+                        {population ? population.toLocaleString() : null}
                       </div>
                       <div>
                         <b>Region: </b>
@@ -133,30 +150,37 @@ const Country = () => {
                       </div>
                       <div>
                         <b>Subregion: </b>
-                        {subregion}
+                        {subregion ? subregion : null}
                       </div>
                       <div>
                         <b>Capital: </b>
-                        {capital}
+                        {capital ? capital : null}
                       </div>
                     </div>
                     <br></br>
                     <div>
                       <div>
                         <b>Top level domain: </b>
-                        {tld}
+                        {tld 
+                          ? tld.map((item) => {
+                          return <span key={uuid()}>{item}, </span>
+                        }) : null}
                       </div>
                       <div>
                         <b>Currencies: </b>
-                        {currencyList.map((currency) => {
-                          return <span key={uuid()}>{currency} </span>;
-                        })}
+                        {currencies
+                          ? Object.keys(currencies).map((currency) => {
+                              return <span key={uuid()}>{currency} </span>;
+                            })
+                          : null}
                       </div>
                       <div>
                         <b>Languages: </b>
-                        {languageList.map((language) => {
-                          return <span key={uuid()}>{language}, </span>;
-                        })}
+                        {languages
+                          ? Object.values(languages).map((language) => {
+                              return <span key={uuid()}>{language}, </span>;
+                            })
+                          : null}
                       </div>
                     </div>
                   </div>
@@ -164,7 +188,8 @@ const Country = () => {
                     <b>{borders ? "Border Countries:" : null}</b>
                     <ul>
                       {borders
-                        ? borders.map((border) => {
+                        ? 
+                        borders.map((border) => {
                             return (
                               <li key={border}>
                                 <Link to={border}>{border}</Link>

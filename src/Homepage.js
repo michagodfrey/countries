@@ -19,7 +19,7 @@ const Homepage = () => {
       .then((response) => {
         setLoading(false);
         setCountries(response.data);
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch((error) => {
         setError(true);
@@ -36,8 +36,6 @@ const Homepage = () => {
 
   // filter by region
   const handleSelect = (e) => {
-    // setSearch("");
-    // document.getElementById("search").value = "";
     const regions = Array.from(
       document.querySelectorAll(".container__region span")
     );
@@ -112,7 +110,7 @@ const Homepage = () => {
             <label htmlFor="search">Search countries</label>
             <label htmlFor="filter">Filter by region</label>
             <select id="filter" name="filter" onChange={handleSelect}>
-              <option disabled selected>
+              <option selected disabled>
                 Filter by Region
               </option>
               {allRegions.map((region) => {
@@ -122,15 +120,15 @@ const Homepage = () => {
           </form>
         </section>
         <div className="container">
-          {filterCountries.sort().map((country) => {
+          {filterCountries.sort((a, b) => a.name.common.localeCompare(b.name.common)).map((country) => {
             const { cca3, flags, name, population, region, capital } = country;
             return (
               <div className="container__item" key={cca3}>
-                <Link to={`/${cca3}`}>
+                <Link to={`/${name.common}`}>
                   <img
                     className="container__flag"
                     src={flags.png}
-                    alt={name.common}
+                    alt={`Flag of ${name.common}`}
                   />
                 </Link>
                 <div className="container__text">

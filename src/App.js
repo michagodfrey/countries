@@ -8,7 +8,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Homepage />} />
-        <Route path="/:cca3" element={<Country />} />
+        <Route path="/:name" element={<Country />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
