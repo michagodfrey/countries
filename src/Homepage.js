@@ -11,6 +11,7 @@ const Homepage = () => {
   const [error, setError] = useState(false);
   const [search, setSearch] = useState("");
 
+
   useEffect(() => {
     setLoading(true);
     setError(false);

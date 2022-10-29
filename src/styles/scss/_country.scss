@@ -3,7 +3,8 @@
     background-color: var(--color-element);
     color: var(--color-text);
     padding: .75rem 2rem;
-    margin-left: 2rem;
+    margin-left: 1rem;
+    margin-bottom: 2rem;
     display: flex;
     align-items: center;
     max-width: fit-content;
@@ -23,13 +24,20 @@
 }
 
 .country {
-    padding: 2rem;
+    max-width: 1520px;
+    margin: auto;
+}
+
+.country__wrapper {
+    padding: 1rem;
+    margin: auto;
+    max-width: 500px;
 
     @include desktop-screen {
+        max-width: 1520px;
         display: flex;
-        justify-content: space-around;
+        padding: 0 4rem;
     }
-
 }
 
 .country__flag {
@@ -38,19 +46,19 @@
 
     @include desktop-screen {
         display: flex;
-        max-width: 40%;
+        justify-content: flex-start;
         flex: 1 1 50%;
-        padding: 2rem;
     }
 }
 
 .country__flag img {
     width: 100%;
-    max-width: 600px;
+    max-width: 500px;
     height: auto;
 
     @include desktop-screen {
-        max-width: 700px;
+        max-width: 600px;
+        max-height: 400px;
     }
 }
 
@@ -61,30 +69,22 @@
         flex-direction: column;
         justify-content: center;
         flex: 1 1 50%;
+        padding-left: 1rem;
     }
 }
 
 .country__info-wrapper {
-    max-width: 600px;
-    margin: auto;
+    width: 100%;;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-self: center;
-
-    @include desktop-screen {
-            width: 100%;
-            max-width: 650px;
-            margin: 1rem;
-        }
 }
 
 .country__details {
     line-height: 2;
-    
+
     @include desktop-screen {
             display: flex;
-            // flex: 1 1 50%;
             justify-content: space-between;
             margin-bottom: 1rem;
         }

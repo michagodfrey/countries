@@ -5,7 +5,8 @@ footer {
     text-align: center;
 
     & a {
-        color: royalblue;
+        color: var(--color-text);
+        text-decoration: underline;
     }
 }
 
