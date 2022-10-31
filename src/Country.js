@@ -6,6 +6,8 @@ import Header from "./Header";
 import { FaArrowLeft } from "react-icons/fa";
 import Footer from "./Footer";
 
+//TO DO: sort border links
+
 const Country = ({ allCountries }) => {
   const params = useParams();
   const [country, setCountry] = useState([]);
@@ -32,33 +34,6 @@ const Country = ({ allCountries }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // TO DO: render borders
-
-  // const borders = country?.borders ? (country.borders.forEach(border) => {
-
-  // }) : null;
-
-  // console.log(borders)
-
-  const getBorderCountries = (allCountries) => {
-    
-
-    const borderCountries = [];
-
-    allCountries.forEach((country) => {
-
-     const countryName = country.borders ? country.borders : null
-     if (countryName) {
-      borderCountries.push(countryName)
-     }
-    })
-    
-    // console.log(borderCountries)
-  }
-
-  getBorderCountries(allCountries)
-
-
   if (loading) {
     return (
       <>
@@ -81,7 +56,7 @@ const Country = ({ allCountries }) => {
             <FaArrowLeft /> Home
           </Link>
         </section>
-        <div className="error-msg">Error loading data :(</div>
+        <div className="error-msg">Error loading data. Sorry about that.</div>
         <Footer />
       </>
     );
@@ -111,9 +86,24 @@ const Country = ({ allCountries }) => {
             borders,
           } = state;
 
-          // array of borders
+          // get border names 
+          const borderCountries = [];
           const borderList = borders ? borders : null;
-          console.log(borders)
+
+
+          const getBorderCountries = () => {
+            allCountries.forEach((country) => {
+              // console.log(country.cca3);
+              borderList.forEach((border) => {
+                if (country.cca3 === border) {
+                  borderCountries.push(country.name.common);
+              }
+            })
+              })
+              
+          }
+
+          getBorderCountries();
 
           return (
             <div key={cca3} className="country__wrapper">
@@ -175,19 +165,16 @@ const Country = ({ allCountries }) => {
                       {borders ? "Border Countries:" : "Border Countries: none"}
                     </b>
                     <ul>
-                      {/* {getBorderCountries(country.borders).map((border) => {
-                        return <li key={border}>{border}</li>;
-                        
-                      })} */}
-                      {/* {borders
-                        ? borders.map((border) => {
-                            return (
-                              <li key={border}>
-                                <Link to={border}>{border}</Link>
-                              </li>
-                            );
-                          })
-                        : null} */}
+                      {borders ? 
+                      borderCountries.map((neighbor) => {
+                        return (
+                          <li
+                            key={neighbor}
+                          >
+                            <Link to={`${neighbor}`}>{neighbor}</Link>
+                          </li>
+                        );
+                      }) : null}
                     </ul>
                   </div>
                 </div>

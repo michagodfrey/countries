@@ -88,7 +88,7 @@ const Homepage = () => {
     return (
       <>
         <Header />
-        <div className="error-msg">Error loading data :(</div>
+        <div className="error-msg">Error loading data. Sorry abuot that.</div>
         <Footer />
       </>
     );

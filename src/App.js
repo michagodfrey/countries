@@ -11,16 +11,15 @@ function App() {
   useEffect(() => {
     axios
       .get("https://restcountries.com/v3.1/all")
-      .then((res) => {
-        setAllCountries(res.data);
+      .then((response) => {
+        setAllCountries(response.data);
+        // console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  // console.log(allCountries)
 
   return (
     <BrowserRouter>
