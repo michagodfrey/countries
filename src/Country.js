@@ -34,12 +34,16 @@ const Country = ({ allCountries }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Issues: 
+    // page refreshes when border links clicked meaning it switches to light mode
+    // some countries, like china, somalia, republic of congo, fetch more than one country and render them all
+
   if (loading) {
     return (
       <>
         <Header />
         <div onClick={() => navigate(-1)} className="back-btn">
-          <FaArrowLeft /> Back
+          <FaArrowLeft /> Home
         </div>
         <div className="loader"></div>
         <Footer />
@@ -63,12 +67,15 @@ const Country = ({ allCountries }) => {
   }
 
   return (
-    <div>
+    <>
       <Header />
       <main className="country">
         <section>
-          <div onClick={() => navigate(-1)} className="back-btn">
-            <FaArrowLeft /> Back
+          <div
+            onClick={() => {navigate("/")}}
+            className="back-btn"
+          >
+            <FaArrowLeft /> Home
           </div>
         </section>
         {country.map((state) => {
@@ -86,24 +93,22 @@ const Country = ({ allCountries }) => {
             borders,
           } = state;
 
-          // get border names 
+          // get border names
           const borderCountries = [];
-          const borderList = borders ? borders : null;
 
-
-          const getBorderCountries = () => {
+          if (borders) {
             allCountries.forEach((country) => {
-              // console.log(country.cca3);
-              borderList.forEach((border) => {
+              borders.forEach((border) => {
                 if (country.cca3 === border) {
                   borderCountries.push(country.name.common);
-              }
-            })
-              })
-              
+                }
+              });
+            });
           }
 
-          getBorderCountries();
+          function refresh() {
+            window.location.reload(false);
+          }
 
           return (
             <div key={cca3} className="country__wrapper">
@@ -161,20 +166,17 @@ const Country = ({ allCountries }) => {
                     </div>
                   </div>
                   <div className="country__borders">
-                    <b>
-                      {borders ? "Border Countries:" : "Border Countries: none"}
-                    </b>
-                    <ul>
-                      {borders ? 
-                      borderCountries.map((neighbor) => {
-                        return (
-                          <li
-                            key={neighbor}
-                          >
-                            <Link to={`${neighbor}`}>{neighbor}</Link>
-                          </li>
-                        );
-                      }) : null}
+                    <b>{borders ? "Border Countries:" : null}</b>
+                    <ul onClick={refresh}>
+                      {borders
+                        ? borderCountries.map((neighbor) => {
+                            return (
+                              <Link to={`/${neighbor}`}>
+                                <li key={neighbor}>{neighbor}</li>
+                              </Link>
+                            );
+                          })
+                        : null}
                     </ul>
                   </div>
                 </div>
@@ -184,7 +186,7 @@ const Country = ({ allCountries }) => {
         })}
       </main>
       <Footer />
-    </div>
+    </>
   );
 }
 export default Country;

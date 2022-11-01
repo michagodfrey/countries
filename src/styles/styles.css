@@ -566,10 +566,15 @@ header {
 }
 
 footer {
-  margin: 2rem;
+  margin: 2rem 0;
   display: flex;
   justify-content: center;
   text-align: center;
+}
+@media (min-width: 992px) {
+  footer {
+    margin: 4rem 0;
+  }
 }
 footer a {
   color: var(--color-text);
@@ -581,8 +586,7 @@ footer a {
   background-color: var(--color-element);
   color: var(--color-text);
   padding: 0.75rem 2rem;
-  margin-left: 1rem;
-  margin-bottom: 2rem;
+  margin: 0 0 2rem 1rem;
   display: flex;
   align-items: center;
   max-width: fit-content;
@@ -593,7 +597,7 @@ footer a {
 }
 @media (min-width: 992px) {
   .back-btn {
-    margin-left: 4rem;
+    margin: 4rem 0 4rem 4rem;
   }
 }
 .back-btn svg {

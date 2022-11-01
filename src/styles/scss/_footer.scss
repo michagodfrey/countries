@@ -1,8 +1,12 @@
 footer {
-    margin: 2rem;
+    margin: 2rem 0;
     display: flex;
     justify-content: center;
     text-align: center;
+
+    @include desktop-screen {
+        margin: 4rem 0;
+    }
 
     & a {
         color: var(--color-text);

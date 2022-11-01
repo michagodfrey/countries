@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import axios from "axios";
 import Homepage from "./Homepage";
 import Country from "./Country";
@@ -22,13 +22,13 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter>
+
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/:name" element={<Country allCountries={allCountries} />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </BrowserRouter>
+
   );
 }
 
