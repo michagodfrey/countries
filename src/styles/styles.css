@@ -501,11 +501,16 @@ select {
 }
 
 .container__flag {
+  height: 186.7px;
+  width: 280px;
+  border-radius: 5px 5px 0 0;
+  display: grid;
+  place-content: center;
+  margin: auto;
+}
+.container__flag img {
   max-height: 186.7px;
   max-width: 280px;
-  border-radius: 5px 5px 0 0;
-  display: block;
-  margin: auto;
 }
 
 .container__text {
@@ -628,21 +633,17 @@ footer a {
 }
 @media (min-width: 992px) {
   .country__flag {
-    display: flex;
     justify-content: flex-start;
     flex: 1 1 50%;
   }
 }
-
 .country__flag img {
   width: 100%;
   max-width: 500px;
-  height: auto;
 }
 @media (min-width: 992px) {
   .country__flag img {
     max-width: 600px;
-    max-height: 400px;
   }
 }
 

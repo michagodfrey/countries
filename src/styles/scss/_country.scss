@@ -44,20 +44,17 @@
     justify-content: center;
 
     @include desktop-screen {
-        display: flex;
         justify-content: flex-start;
         flex: 1 1 50%;
     }
-}
 
-.country__flag img {
-    width: 100%;
-    max-width: 500px;
-    height: auto;
-
-    @include desktop-screen {
-        max-width: 600px;
-        max-height: 400px;
+    & img {
+        width: 100%;
+        max-width: 500px;
+    
+        @include desktop-screen {
+            max-width: 600px;
+        }
     }
 }
 
@@ -74,7 +71,6 @@
 
 .country__info-wrapper {
     width: 100%;
-    ;
     display: flex;
     flex-direction: column;
     align-self: center;

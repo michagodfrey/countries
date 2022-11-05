@@ -5,8 +5,16 @@ const AppContext = React.createContext();
 const AppProvidor = ({ children }) => {
   const [theme, setTheme] = useState("light-theme");
 
+  // maintain theme on refresh
+  useEffect(() => {
+    if (window.localStorage.getItem("theme") === "dark-theme") {
+      setTheme("dark-theme");
+    }
+  }, []);
+
   useEffect(() => {
     document.documentElement.className = theme;
+    window.localStorage.setItem("theme", theme);
   }, [theme]);
 
   const toggleTheme = () => {

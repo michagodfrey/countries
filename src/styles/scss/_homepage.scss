@@ -88,11 +88,17 @@ select {
 }
 
 .container__flag {
-    max-height: 186.7px;
-    max-width: 280px;
+    height: 186.7px;
+    width: 280px;
     border-radius: 5px 5px 0 0;
-    display: block;
+    display: grid;
+    place-content: center;
     margin: auto;
+
+    & img {
+        max-height: 186.7px;
+        max-width: 280px;
+    }
 }
 
 .container__text {

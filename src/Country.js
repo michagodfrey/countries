@@ -1,19 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import uuid from "react-uuid";
 import Header from "./Header";
 import { FaArrowLeft } from "react-icons/fa";
 import Footer from "./Footer";
-
-//TO DO: sort border links
 
 const Country = ({ allCountries }) => {
   const params = useParams();
   const [country, setCountry] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -34,15 +31,15 @@ const Country = ({ allCountries }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Issues: 
-    // page refreshes when border links clicked meaning it switches to light mode
-    // some countries, like china, somalia, republic of congo, fetch more than one country and render them all
+  // todo
+  // fix issue with USA, Iran, Samoa, Guinea, Niger, / Sudan, China, Rep of Congo, Mali
+  // remove %2 from urls
 
   if (loading) {
     return (
       <>
         <Header />
-        <div onClick={() => navigate(-1)} className="back-btn">
+        <div onClick={() => navigate("/")} className="back-btn">
           <FaArrowLeft /> Home
         </div>
         <div className="loader"></div>
@@ -72,7 +69,9 @@ const Country = ({ allCountries }) => {
       <main className="country">
         <section>
           <div
-            onClick={() => {navigate("/")}}
+            onClick={() => {
+              navigate("/");
+            }}
             className="back-btn"
           >
             <FaArrowLeft /> Home
@@ -106,7 +105,23 @@ const Country = ({ allCountries }) => {
             });
           }
 
-          function refresh() {
+          const getTld = (obj) => {
+            if (!obj) return "";
+            return Object.values(obj).join(", ");
+          };
+
+          const getCurrencies = (obj) => {
+            if (!obj) return "";
+            return Object.keys(obj).join(", ");
+          };
+
+          const getLanguages = (obj) => {
+            if (!obj) return "";
+            return Object.values(obj).join(", ");
+          };
+
+          // reload page when border clicked because url changes onclick but no re-rendering occurs
+          function reload() {
             window.location.reload(false);
           }
 
@@ -141,38 +156,26 @@ const Country = ({ allCountries }) => {
                     <div>
                       <div>
                         <b>Top level domain: </b>
-                        {tld
-                          ? tld.map((item) => {
-                              return <span key={uuid()}>{item}, </span>;
-                            })
-                          : null}
+                        {getTld(tld)}
                       </div>
                       <div>
                         <b>Currencies: </b>
-                        {currencies
-                          ? Object.keys(currencies).map((currency) => {
-                              return <span key={uuid()}>{currency} </span>;
-                            })
-                          : null}
+                        {getCurrencies(currencies)}
                       </div>
                       <div>
                         <b>Languages: </b>
-                        {languages
-                          ? Object.values(languages).map((language) => {
-                              return <span key={uuid()}>{language}, </span>;
-                            })
-                          : null}
+                        {getLanguages(languages)}
                       </div>
                     </div>
                   </div>
                   <div className="country__borders">
                     <b>{borders ? "Border Countries:" : null}</b>
-                    <ul onClick={refresh}>
+                    <ul onClick={reload}>
                       {borders
                         ? borderCountries.map((neighbor) => {
                             return (
-                              <Link to={`/${neighbor}`}>
-                                <li key={neighbor}>{neighbor}</li>
+                              <Link key={neighbor} to={`/${neighbor}`}>
+                                <li>{neighbor}</li>
                               </Link>
                             );
                           })
@@ -188,5 +191,5 @@ const Country = ({ allCountries }) => {
       <Footer />
     </>
   );
-}
+};
 export default Country;

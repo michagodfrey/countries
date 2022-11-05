@@ -63,7 +63,7 @@ const Homepage = () => {
   // search country
   const handleSearch = (e) => {
     const select = document.querySelector("select");
-    select.value = "All";
+    select.value = "Filter by Region";
     resetFilter();
     setSearch(e.target.value);
   };
@@ -111,7 +111,7 @@ const Homepage = () => {
             <label htmlFor="search">Search countries</label>
             <label htmlFor="filter">Filter by region</label>
             <select id="filter" name="filter" onChange={handleSelect}>
-              <option selected disabled>
+              <option disabled>
                 Filter by Region
               </option>
               {allRegions.map((region) => {
@@ -121,35 +121,36 @@ const Homepage = () => {
           </form>
         </section>
         <div className="container">
-          {filterCountries.sort((a, b) => a.name.common.localeCompare(b.name.common)).map((country) => {
-            const { cca3, flags, name, population, region, capital } = country;
-            return (
-              <div className="container__item" key={cca3}>
-                <Link to={`/${name.common}`}>
-                  <img
-                    className="container__flag"
-                    src={flags.png}
-                    alt={`Flag of ${name.common}`}
-                  />
-                </Link>
-                <div className="container__text">
-                  <h2>{name.common}</h2>
-                  <div>
-                    <b>Population: </b>
-                    {population.toLocaleString()}
-                  </div>
-                  <div className="container__region">
-                    <b>Region: </b>
-                    <span>{region}</span>
-                  </div>
-                  <div>
-                    <b>Capital: </b>
-                    {capital}
+          {filterCountries
+            .sort((a, b) => a.name.common.localeCompare(b.name.common))
+            .map((country) => {
+              const { cca3, flags, name, population, region, capital } =
+                country;
+              return (
+                <div className="container__item" key={cca3}>
+                  <Link to={`/${name.common}`}>
+                    <div className="container__flag">
+                      <img src={flags.png} alt={`Flag of ${name.common}`} />
+                    </div>
+                  </Link>
+                  <div className="container__text">
+                    <h2>{name.common}</h2>
+                    <div>
+                      <b>Population: </b>
+                      {population.toLocaleString()}
+                    </div>
+                    <div className="container__region">
+                      <b>Region: </b>
+                      <span>{region}</span>
+                    </div>
+                    <div>
+                      <b>Capital: </b>
+                      {capital}
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
         </div>
       </main>
       <Footer />
