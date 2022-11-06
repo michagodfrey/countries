@@ -10,6 +10,7 @@ This is a solution to the [REST Countries API with color theme switcher challeng
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
   - [Useful resources](#useful-resources)
 - [Author](#author)
 
@@ -40,8 +41,8 @@ Country detail desktop and mobile views with light and dark mode
 
 ### Links
 
-- Solution URL: coming soon
-- Live Site URL: coming soon
+- Solution URL: [Frontend Mentor Solution](https://www.frontendmentor.io/solutions/where-in-the-world-rest-countries-api-with-react-and-sass-UAvhXazqy8)
+- Live Site URL: [live site](https://where-in-the-world-65701.web.app/)
 
 ## My process
 
@@ -50,6 +51,10 @@ Country detail desktop and mobile views with light and dark mode
 - Sass
 - Mobile-first workflow
 - [React](https://reactjs.org/) - JS library
+
+### What I learned
+
+I'm pretty happy with the result, although at the time of submitting the project, there are some aspects of React-Router-Dom that I haven't figuted out.
 
 ### Useful resources
 
@@ -63,5 +68,5 @@ The following packages were used:
 ## Author
 
 - Website - [My project showcase](https://michagodfrey.github.io/)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/michagodfrey)
+- Frontend Mentor - [@michagodfrey](https://www.frontendmentor.io/profile/michagodfrey)
 - Twitter - [@Michael07865192](https://twitter.com/Michael07865192)
