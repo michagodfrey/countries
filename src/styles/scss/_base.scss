@@ -69,11 +69,18 @@ a {
     }
 }
 
+// fetch error/not found
 .error-msg {
     color: red;
     font-size: 2rem;
     text-align: center;
     margin-top: 2rem;
+}
+
+// maintain back button position on loading and error screens
+.loading {
+    max-width: 1520px;
+    margin: auto;
 }
 
 //hide country cards filtered out

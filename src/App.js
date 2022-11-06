@@ -11,9 +11,9 @@ function App() {
   useEffect(() => {
     axios
       .get("https://restcountries.com/v3.1/all")
-      .then((response) => {
-        setAllCountries(response.data);
-        // console.log(response.data);
+      .then((res) => {
+        setAllCountries(res.data);
+        // console.log(res.data);
       })
       .catch((error) => {
         console.log(error);
@@ -22,13 +22,11 @@ function App() {
   }, []);
 
   return (
-
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/:name" element={<Country allCountries={allCountries} />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-
+    <Routes>
+      <Route path="/" element={<Homepage />} />
+      <Route path=":name" element={<Country allCountries={allCountries} />}/>
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 }
 

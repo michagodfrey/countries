@@ -11,16 +11,15 @@ const Homepage = () => {
   const [error, setError] = useState(false);
   const [search, setSearch] = useState("");
 
-
   useEffect(() => {
     setLoading(true);
     setError(false);
     axios
       .get("https://restcountries.com/v3.1/all")
-      .then((response) => {
+      .then((res) => {
         setLoading(false);
-        setCountries(response.data);
-        // console.log(response.data);
+        setCountries(res.data);
+        // console.log(res.data);
       })
       .catch((error) => {
         setError(true);
@@ -78,7 +77,9 @@ const Homepage = () => {
     return (
       <>
         <Header />
-        <div className="loader"></div>
+        <main>
+          <div className="loader"></div>
+        </main>
         <Footer />
       </>
     );
@@ -88,7 +89,9 @@ const Homepage = () => {
     return (
       <>
         <Header />
-        <div className="error-msg">Error loading data. Sorry abuot that.</div>
+        <main>
+          <div className="error-msg">Error loading data. Sorry abuot that.</div>
+        </main>
         <Footer />
       </>
     );

@@ -401,6 +401,11 @@ a:visited {
   margin-top: 2rem;
 }
 
+.loading {
+  max-width: 1520px;
+  margin: auto;
+}
+
 .hidden {
   display: none;
 }

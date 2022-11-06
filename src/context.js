@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 
 const AppContext = React.createContext();
 
+// this is for dark mode switch
 const AppProvidor = ({ children }) => {
   const [theme, setTheme] = useState("light-theme");
 

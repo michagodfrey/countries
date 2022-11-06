@@ -10,13 +10,14 @@ This is a solution to the [REST Countries API with color theme switcher challeng
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
 
 ## Overview
+
+This is the first advanced Frontend Mentor challenge I've completed. The data is provided by [Rest Countries API](https://restcountries.com/) and I used the React library to render the data.
+
+It was good practice of using React to display data from an external API and especicially so with the more subtle aspects, like the country border links.
 
 ### The challenge
 
@@ -31,52 +32,36 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+Homepage desktop and mobile views with light and dark mode
+![Homepage screens](./public/screenshot-homepage.png)
+
+Country detail desktop and mobile views with light and dark mode
+![Country screens](./public/screenshot-country.png)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: coming soon
+- Live Site URL: coming soon
 
 ## My process
 
 ### Built with
 
-- Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
-- CSS Grid
+- Sass
 - Mobile-first workflow
 - [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-### What I learned
-
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
-```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
-```
-
-### Continued development
 
 ### Useful resources
 
 World map favicon from [favicon.io](https://favicon.io/emoji-favicons/world-map/)
 
+The following packages were used:
+
+- axios
+- react-icons
+
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-## Acknowledgments
+- Website - [My project showcase](https://michagodfrey.github.io/)
+- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/michagodfrey)
+- Twitter - [@Michael07865192](https://twitter.com/Michael07865192)

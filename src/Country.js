@@ -6,18 +6,18 @@ import { FaArrowLeft } from "react-icons/fa";
 import Footer from "./Footer";
 
 const Country = ({ allCountries }) => {
-  const params = useParams();
   const [country, setCountry] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
+  const params = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
     setLoading(true);
     setError(false);
     axios
-      .get(`https://restcountries.com/v3.1/name/${params.name}`)
+      .get(`https://restcountries.com/v3.1/name/${params.name}?fullText=true`)
       .then((res) => {
         setLoading(false);
         setCountry(res.data);
@@ -32,17 +32,20 @@ const Country = ({ allCountries }) => {
   }, []);
 
   // todo
-  // fix issue with USA, Iran, Samoa, Guinea, Niger, / Sudan, China, Rep of Congo, Mali
-  // remove %2 from urls
+  // remove %20 from urls
 
   if (loading) {
     return (
       <>
         <Header />
-        <div onClick={() => navigate("/")} className="back-btn">
-          <FaArrowLeft /> Home
-        </div>
-        <div className="loader"></div>
+        <main>
+          <section className="loading">
+            <Link to={"/"} className="back-btn">
+              <FaArrowLeft /> Home
+            </Link>
+            <div className="loader"></div>
+          </section>
+        </main>
         <Footer />
       </>
     );
@@ -52,12 +55,14 @@ const Country = ({ allCountries }) => {
     return (
       <>
         <Header />
-        <section>
-          <Link to={"/"} className="back-btn">
-            <FaArrowLeft /> Home
-          </Link>
-        </section>
-        <div className="error-msg">Error loading data. Sorry about that.</div>
+        <main>
+          <section className="loading">
+            <Link to={"/"} className="back-btn">
+              <FaArrowLeft /> Home
+            </Link>
+          </section>
+          <div className="error-msg">Error loading data. Sorry about that.</div>
+        </main>
         <Footer />
       </>
     );
